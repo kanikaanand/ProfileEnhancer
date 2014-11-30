@@ -2,6 +2,7 @@ package com.example.profileenhancer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -11,6 +12,8 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+
+
 import android.support.v7.app.ActionBarActivity;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -19,6 +22,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -26,22 +30,27 @@ import android.widget.SimpleAdapter;
 public class MainActivity extends ActionBarActivity {
 	
 	Button btnGetJobs;
-	private StringBuilder query;
+	private String query = null;
 	JSONArray jsonArray = null;
 	ArrayList<HashMap<String, String>> jobList = new ArrayList<HashMap<String, String>>();
 	ListView listView;
 	ListAdapter adapter;
-	FindJobs findJobs;
+	CareerBuilder careerBuilder =new CareerBuilder();
+	Indeed indeed = new Indeed();
+	String jobTitle;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		query = new StringBuilder();
+		EditText title = (EditText)findViewById(R.id.jobtitle);
+    	jobTitle = title.getText().toString();
+    	
 		
 	}
 	public void ViewJobs(View v)
 	{
+		
 		new LoadJobs().execute();
 	}
 
@@ -63,8 +72,8 @@ public class MainActivity extends ActionBarActivity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-	 class LoadJobs extends AsyncTask<String, String, String>{
-	    	String returnString;
+	 class LoadJobs extends AsyncTask<String, String, List<String>>{
+	    	List<String> returnString = new ArrayList<String>();
 	    	XMLParser parser;
 	    	static final String KEY_ITEM = "item";
 	    	LoadJobs()
@@ -75,26 +84,26 @@ public class MainActivity extends ActionBarActivity {
 	    	{
 	    		
 	    	}
-	    	protected String doInBackground(String... params) {
+	    	protected List<String> doInBackground(String... params) {
 	    		Log.i("Result of API","Start of doInbackground");
-	    		query.setLength(0);
-	    		query.append("http://api.careerbuilder.com/v1/jobsearch?DeveloperKey=WDHP3GP6SH5M76K47577&Category=JN008");
-//	    		query.append("http://www.authenticjobs.com/api/?api_key=f151c813ddfe246d647fdb878eda0a02&method=aj.jobs.search&keywords=software&format=json");
-//	            query.append("location="+latitude+","+longitude+"&");
-//	            query.append("radius=5000" + "&");
-//	            query.append("types=" + category + "&");
-//	            query.append("sensor=true&"); //Must be true if queried from a device with GPS
-//	            query.append("key=" + API_KEY);
-	    		findJobs = new FindJobs();
+	
+	    	
+	    		query = careerBuilder.setQuery(jobTitle);
 	    		Log.i("Result of API",query.toString());
-	            returnString = findJobs.searchJobs(query.toString());
+	            returnString.add(careerBuilder.searchJobs(query.toString()));
+	    		
+	            query = indeed.setQuery(jobTitle);
+	    		Log.i("Result of API",query.toString());
+	            returnString.add(indeed.searchJobs(query.toString()));
+
 	    		return returnString;
 	    	}
-	    	protected void onPostExecute(String xml) {
+	    	protected void onPostExecute(List<String> returnStrings) {
+	    		
 	    		 Log.i("Result of API","start of onPostexecute list implemented");
 	    		 jobList.clear();
 	    		 parser = new XMLParser();
-	    		 Document doc = parser.getDomElement(xml); // getting DOM element
+	    		 Document doc = parser.getDomElement(returnStrings.get(0)); // getting DOM element
 	    		 
 	    		 NodeList list = doc.getElementsByTagName("JobSearchResult");
 	    	
