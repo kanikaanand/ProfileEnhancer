@@ -11,8 +11,6 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-
-
 import android.support.v7.app.ActionBarActivity;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -21,7 +19,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -34,22 +31,17 @@ public class MainActivity extends ActionBarActivity {
 	ArrayList<HashMap<String, String>> jobList = new ArrayList<HashMap<String, String>>();
 	ListView listView;
 	ListAdapter adapter;
-	CareerBuilder careerBuilder;
-	String jobTitle;
+	FindJobs findJobs;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		query = new StringBuilder();
-		EditText title = (EditText)findViewById(R.id.jobtitle);
-    	jobTitle = title.getText().toString();
-    	
 		
 	}
 	public void ViewJobs(View v)
 	{
-		
 		new LoadJobs().execute();
 	}
 
@@ -85,12 +77,17 @@ public class MainActivity extends ActionBarActivity {
 	    	}
 	    	protected String doInBackground(String... params) {
 	    		Log.i("Result of API","Start of doInbackground");
-	
-	    		careerBuilder = new CareerBuilder();
-	    		careerBuilder.setQuery(jobTitle);
-	    		
+	    		query.setLength(0);
+	    		query.append("http://api.careerbuilder.com/v1/jobsearch?DeveloperKey=WDHP3GP6SH5M76K47577&Category=JN008");
+//	    		query.append("http://www.authenticjobs.com/api/?api_key=f151c813ddfe246d647fdb878eda0a02&method=aj.jobs.search&keywords=software&format=json");
+//	            query.append("location="+latitude+","+longitude+"&");
+//	            query.append("radius=5000" + "&");
+//	            query.append("types=" + category + "&");
+//	            query.append("sensor=true&"); //Must be true if queried from a device with GPS
+//	            query.append("key=" + API_KEY);
+	    		findJobs = new FindJobs();
 	    		Log.i("Result of API",query.toString());
-	            returnString = careerBuilder.searchJobs(query.toString());
+	            returnString = findJobs.searchJobs(query.toString());
 	    		return returnString;
 	    	}
 	    	protected void onPostExecute(String xml) {
