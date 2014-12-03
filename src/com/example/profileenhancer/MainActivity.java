@@ -147,6 +147,7 @@ public class MainActivity extends ActionBarActivity {
 	    			 job.setCity(city);
 	    			 job.setState(state);
 	    			 job.setUrl(url);
+	    			 job.setChecked(false);
 	    			 listSearch.add(job);
 	    			 
 	    		//	 HashMap<String, String> map = new HashMap<String, String>();

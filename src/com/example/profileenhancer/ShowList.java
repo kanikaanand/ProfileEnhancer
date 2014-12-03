@@ -74,14 +74,37 @@ OnItemClickListener {
 		
     	
 	 public void onItemClick(AdapterView<?> parent, View view, int position,long id) {
-	    	String url = jobList.getJobList().get(position).getUrl();
 	    	
+		 	
+	        
+	       
+	        
+	        Job job = jobList.getJobList().get(position);
+		 	String url = job.getUrl();
+		 	job.toggleChecked();  
+		 	
+		 	 JobViewHolder viewHolder = (JobViewHolder) view.getTag();  
+		     viewHolder.getCheckBox().setChecked( job.isChecked() );  
+		        
+		        
 	    	Intent i = new Intent(Intent.ACTION_VIEW);
 	    	i.setData(Uri.parse(url));
 	    	startActivity(i);
 	    }
 	    
-
+	 public void onClickData ( View view ) {
+	     List<Job> jobData = jobList.getJobList();
+	     System.out.println("Total Size :"  + jobData.size());
+	      
+	     for (Job job : jobData) {
+	   if ( job.isChecked() ) {
+		   
+		   //save it somewhere ....
+		   
+	    //Log.e("Checker", job.getJobTitle());
+	   }
+	  }
+	    }
 
 	
 

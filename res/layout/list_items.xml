@@ -9,6 +9,13 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.profileenhancer.MainActivity" >
 
+       <Button
+        android:id="@+id/main_btn_data"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClickData"
+        android:text="@string/save" />
+       
     <ListView
         android:id="@+id/listViewJobs"
         android:layout_width="match_parent"
