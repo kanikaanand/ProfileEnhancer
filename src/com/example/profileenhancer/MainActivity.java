@@ -13,10 +13,14 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import com.google.gson.Gson;
 
 
+
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.provider.SyncStateContract.Constants;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -33,7 +37,9 @@ public class MainActivity extends ActionBarActivity {
 	Button btnGetJobs;
 	private String query = null;
 	JSONArray jsonArray = null;
-	ArrayList<HashMap<String, String>> jobList = new ArrayList<HashMap<String, String>>();
+	
+	JobList jobList = new JobList();
+	List<Job> listSearch = new ArrayList<Job>();
 	ListView listView;
 	ListAdapter adapter;
 	CareerBuilder careerBuilder =new CareerBuilder();
@@ -50,8 +56,12 @@ public class MainActivity extends ActionBarActivity {
 	}
 	public void ViewJobs(View v)
 	{
-		
+
 		new LoadJobs().execute();
+		
+	
+		
+		
 	}
 
 	@Override
@@ -78,6 +88,7 @@ public class MainActivity extends ActionBarActivity {
 	    	static final String KEY_ITEM = "item";
 	    	EditText title = (EditText)findViewById(R.id.jobId);
 	    	String jobTitle = title.getText().toString();
+			private boolean flag = false;
 	    	LoadJobs()
 	    	{
 	    		
@@ -107,7 +118,7 @@ public class MainActivity extends ActionBarActivity {
 			protected void onPostExecute(List<String> returnStrings) {
 	    		
 	    		 
-	    		 jobList.clear();
+	    		 //jobList.clear();
 	    		 parser = new XMLParser();
 	    		 Document doc = parser.getDomElement(returnStrings.get(0)); // getting DOM element
 	    		 
@@ -122,19 +133,49 @@ public class MainActivity extends ActionBarActivity {
 	    			 
 	    			 String company = cElement.getElementsByTagName("Company").item(0).getTextContent();
 	    			 String jobtitle = cElement.getElementsByTagName("JobTitle").item(0).getTextContent();
+	    			 String city = cElement.getElementsByTagName("City").item(0).getTextContent();
+	    			 String state = cElement.getElementsByTagName("State").item(0).getTextContent();
+	    			 String url = cElement.getElementsByTagName("JobServiceURL").item(0).getTextContent();
+	    					 
 	    			 Log.i("Result of parsing",company);
 	    			 Log.i("Result of parsing",jobtitle);
 	    			
-	    			 HashMap<String, String> map = new HashMap<String, String>();
- 	            	map.put("company", company);
- 	            	map.put("jobtitle", jobtitle);
- 	            	jobList.add(map);
-	            	listView = (ListView)findViewById(R.id.listViewJobs);
-	            	adapter = new SimpleAdapter(MainActivity.this, jobList,R.layout.list_v,new String[] { "company","jobtitle" }, new int[] {R.id.company, R.id.jobtitle });
-	            	listView.setAdapter(adapter);
+	    			 
+	    			 Job job = new Job();
+	    			 job.setCompany(company);
+	    			 job.setJobTitle(jobtitle);
+	    			 job.setCity(city);
+	    			 job.setState(state);
+	    			 job.setUrl(url);
+	    			 listSearch.add(job);
+	    			 
+	    		//	 HashMap<String, String> map = new HashMap<String, String>();
+ 	            //	map.put("company", company);
+ 	           // 	map.put("jobtitle", jobtitle);
+ 	          //  	jobList.add(map);
+	            	//listView = (ListView)findViewById(R.id.listViewJobs);
+	            	//adapter = new SimpleAdapter(MainActivity.this, jobList,R.layout.list_v,new String[] { "company","jobtitle" }, new int[] {R.id.company, R.id.jobtitle });
+	            	//listView.setAdapter(adapter);
 	    		 }
-
+	    		 
+	    		 jobList.setJobList(listSearch);
+	    		 
+	    			
+	    			Gson gS = new Gson();
+	    			String target = gS.toJson(jobList);
+	    			Intent i = new Intent();
+	    			i.putExtra("MyObjectAsString", target);
+	    			i.setClass(MainActivity.this, ShowList.class);
+	    			startActivity(i);
+	    			
+	    		 //flag  = true;
+	    		 
+	    		 //Button title = (Button)findViewById(R.id.button1);
+	    		// title.setText("Click to View Results");
+	    		 
 	    		}
+	    	
+	    	
 	    	}
 }
 
