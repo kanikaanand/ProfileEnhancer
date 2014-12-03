@@ -53,11 +53,13 @@ public class CareerBuilder {
         try {
         	Log.i("Result of API","print here1");
             response = httpclient.execute(new HttpGet(query));
+        	//response = httpclient.execute(new HttpGet("http://www.authenticjobs.com/api/?api_key=f151c813ddfe246d647fdb878eda0a02&format=xml&method=aj.jobs.search&keywords=software"));
             Log.i("Result of API","print here2");
             HttpEntity entity = response.getEntity();
             if (entity != null) {
                 //do something with the response
                 responseString = EntityUtils.toString(entity);
+                Log.i("Result of API","Response String is "+responseString);
             }
             else 
             	Log.i("Result of API","print here5");
