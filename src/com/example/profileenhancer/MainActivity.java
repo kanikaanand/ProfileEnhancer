@@ -355,7 +355,7 @@ OnClickListener,ConnectionCallbacks, OnConnectionFailedListener {
 	    			 String jobtitle = cElement.getElementsByTagName("JobTitle").item(0).getTextContent();
 	    			 String city = cElement.getElementsByTagName("City").item(0).getTextContent();
 	    			 String state = cElement.getElementsByTagName("State").item(0).getTextContent();
-	    			 String url = cElement.getElementsByTagName("JobServiceURL").item(0).getTextContent();
+	    			 String url = cElement.getElementsByTagName("CompanyDetailsURL").item(0).getTextContent();
 	    					 
 	    			 Log.i("Result of parsing",company);
 	    			 Log.i("Result of parsing",jobtitle);
