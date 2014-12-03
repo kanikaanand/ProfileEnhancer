@@ -22,11 +22,13 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 public class MainActivity extends ActionBarActivity {
 	
@@ -92,7 +94,7 @@ public class MainActivity extends ActionBarActivity {
 	
 	    		Log.i("Result of API","Job Title is "+ jobTitle);
 	    		query = careerBuilder.setQuery(jobTitle);
-	    		Log.i("Result of API",query.toString());
+	    		//Log.i("Result of API",query.toString());
 	    		String result = careerBuilder.searchJobs(query.toString());
 	    		Log.i("Result of API","XML OUTPUT "+ result);
 	            returnString.add(result);
@@ -132,6 +134,22 @@ public class MainActivity extends ActionBarActivity {
 	            	listView = (ListView)findViewById(R.id.listViewJobs);
 	            	adapter = new SimpleAdapter(MainActivity.this, jobList,R.layout.list_v,new String[] { "company","jobtitle" }, new int[] {R.id.company, R.id.jobtitle });
 	            	listView.setAdapter(adapter);
+	            	
+	            	//clicking of a job
+	            	listView.setClickable(true);
+	                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+	                    @Override
+	                    public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
+	                        Object o = listView.getItemAtPosition(position);
+	                        //String str=(String)o;//As you are using Default String Adapter
+	                        //Toast.makeText(getApplicationContext(),str,Toast.LENGTH_SHORT).show();
+	                        HashMap temp  = (HashMap)o;
+	                        String company = (String)temp.get("company");
+	                    	 Toast.makeText(getApplicationContext(),company, Toast.LENGTH_SHORT).show();
+	                    }
+	                });
+	            	
 	    		 }
 
 	    		}
