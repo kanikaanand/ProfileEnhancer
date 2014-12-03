@@ -19,7 +19,22 @@ public class Indeed {
 	{
 		StringBuilder query= new StringBuilder();
 		query.setLength(0);
-		query.append("http://api.careerbuilder.com/v1/jobsearch?DeveloperKey=WDHP3GP6SH5M76K47577&Category=JN008");
+		
+		String[] jobTitleSplit = jobTitle.split(" ");
+		//as_and=software+developer
+		//http://api.indeed.com/ads/apisearch?publisher=2098455248333327&v=2&as_and=software+developer
+		StringBuilder addTitle = new StringBuilder();
+		
+		for(int i = 0;i<jobTitleSplit.length;i++)
+		{
+			
+			addTitle.append(jobTitleSplit[i]);
+			
+			if(i!=jobTitleSplit.length-1)
+			addTitle.append("+");
+		}
+		
+		query.append("http://api.indeed.com/ads/apisearch?publisher=2098455248333327&v=2&as_and="+addTitle);
 //		query.append("http://www.authenticjobs.com/api/?api_key=f151c813ddfe246d647fdb878eda0a02&method=aj.jobs.search&keywords=software&format=json");
 		
 		return query.toString();

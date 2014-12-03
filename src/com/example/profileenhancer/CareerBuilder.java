@@ -20,7 +20,25 @@ public class CareerBuilder {
 		StringBuilder query= new StringBuilder();
 		query.setLength(0);
 		query.append("https://api.careerbuilder.com/v1/jobsearch?DeveloperKey=WDHP3GP6SH5M76K47577");
-		query.append("&JobTitle="+jobTitle);
+		
+
+		String[] jobTitleSplit = jobTitle.split(" ");
+		//as_and=software+developer
+		//http://api.indeed.com/ads/apisearch?publisher=2098455248333327&v=2&as_and=software+developer
+		StringBuilder addTitle = new StringBuilder();
+		
+		
+		for(int i = 0;i<jobTitleSplit.length;i++)
+		{
+			
+			addTitle.append(jobTitleSplit[i]);
+			
+			if(i!=jobTitleSplit.length-1)
+			addTitle.append("+");
+		}
+		
+		
+		query.append("&JobTitle="+addTitle);
 //		query.append("http://www.authenticjobs.com/api/?api_key=f151c813ddfe246d647fdb878eda0a02&method=aj.jobs.search&keywords=software&format=json");
 		
 		return query.toString();
