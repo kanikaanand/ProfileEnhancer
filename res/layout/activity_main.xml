@@ -73,8 +73,36 @@
        
     </EditText>
     </LinearLayout>
+<LinearLayout
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_marginLeft="10dp"
+           android:orientation="horizontal"
+           android:layout_weight="1" >
+    
+           <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="32dp"
+        
+        android:text="Location"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
-     
+    <EditText
+        android:id="@+id/location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginLeft="40dp"
+        android:layout_centerHorizontal="true"
+        android:ems="10" >
+
+       
+    </EditText>
+    </LinearLayout> 
     <Button
         android:id="@+id/button1"
         android:layout_width="wrap_content"

@@ -4,6 +4,7 @@
 	<classpathentry kind="src" path="gen"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
+<<<<<<< HEAD
 	<classpathentry exported="true" kind="lib" path="C:/Users/sseth/Downloads/gson-2.3.jar"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/J2SE-1.5"/>
 	<classpathentry kind="lib" path="C:/Users/sseth/adt-bundle-windows-x86_64-20140702/sdk/platforms/android-19/android.jar" sourcepath="C:/Program Files (x86)/Android/android-sdk/sources/android-19">
@@ -11,5 +12,11 @@
 			<accessrule kind="nonaccessible" pattern="com/android/internal/**"/>
 		</accessrules>
 	</classpathentry>
+=======
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/J2SE-1.5"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/kanikaanand/Downloads/gson-2.3.jar"/>
+	<classpathentry kind="lib" path="C:/adt-bundle-windows-x86-20140702/sdk/platforms/android-19/android.jar"/>
+	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
+>>>>>>> 112b0420c51a3369775954c5b4cade59fa1feda7
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

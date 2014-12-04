@@ -15,7 +15,7 @@ import android.util.Log;
 
 public class CareerBuilder {
 	
-	public String setQuery(String jobTitle)
+	public String setQuery(String jobTitle, String location)
 	{
 		StringBuilder query= new StringBuilder();
 		query.setLength(0);
@@ -23,10 +23,11 @@ public class CareerBuilder {
 		
 
 		String[] jobTitleSplit = jobTitle.split(" ");
+		String[] locationSplit = location.split(" ");
 		//as_and=software+developer
 		//http://api.indeed.com/ads/apisearch?publisher=2098455248333327&v=2&as_and=software+developer
 		StringBuilder addTitle = new StringBuilder();
-		
+		StringBuilder locationString = new StringBuilder();
 		
 		for(int i = 0;i<jobTitleSplit.length;i++)
 		{
@@ -36,9 +37,18 @@ public class CareerBuilder {
 			if(i!=jobTitleSplit.length-1)
 			addTitle.append("+");
 		}
+		for(int j = 0;j<locationSplit.length;j++)
+		{
+			
+			locationString.append(locationSplit[j]);
+			
+			if(j!=locationSplit.length-1)
+				locationString.append("+");
+		}
 		
 		
 		query.append("&JobTitle="+addTitle);
+		query.append("&Location="+locationString);
 //		query.append("http://www.authenticjobs.com/api/?api_key=f151c813ddfe246d647fdb878eda0a02&method=aj.jobs.search&keywords=software&format=json");
 		
 		return query.toString();
@@ -59,7 +69,7 @@ public class CareerBuilder {
             if (entity != null) {
                 //do something with the response
                 responseString = EntityUtils.toString(entity);
-                Log.i("Result of API","Response String is "+responseString);
+                //Log.i("Result of API","Response String is "+responseString);
             }
             else 
             	Log.i("Result of API","print here5");

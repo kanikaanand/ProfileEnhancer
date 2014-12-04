@@ -71,7 +71,7 @@ OnClickListener,ConnectionCallbacks, OnConnectionFailedListener {
  
     private ConnectionResult mConnectionResult;
  
-    private SignInButton btnSignIn;
+    private SignInButton btnSignIn;	
     private TextView txtName, txtEmail;
     private LinearLayout llProfileLayout;
 	
@@ -330,7 +330,10 @@ OnClickListener,ConnectionCallbacks, OnConnectionFailedListener {
 	    	XMLParser parser;
 	    	static final String KEY_ITEM = "item";
 	    	EditText title = (EditText)findViewById(R.id.jobId);
+	    	EditText locationEditText = (EditText)findViewById(R.id.location);
 	    	String jobTitle = title.getText().toString();
+	    	String locationString = locationEditText.getText().toString();
+	    	
 			private boolean flag = false;
 	    	LoadJobs()
 	    	{
@@ -345,10 +348,10 @@ OnClickListener,ConnectionCallbacks, OnConnectionFailedListener {
 	    		
 	
 	    		Log.i("Result of API","Job Title is "+ jobTitle);
-	    		query = careerBuilder.setQuery(jobTitle);
+	    		query = careerBuilder.setQuery(jobTitle,locationString);
 	    		//Log.i("Result of API",query.toString());
 	    		String result = careerBuilder.searchJobs(query.toString());
-	    		Log.i("Result of API","XML OUTPUT "+ result);
+	    		Log.i("Result of API","XML OUTPUT "+ "it come here ");
 	            returnString.add(result);
 	    		
 //	            query = indeed.setQuery(jobTitle);
