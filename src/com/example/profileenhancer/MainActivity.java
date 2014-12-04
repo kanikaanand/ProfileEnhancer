@@ -337,7 +337,6 @@ OnClickListener,ConnectionCallbacks, OnConnectionFailedListener {
 	    	@Override
 			protected void onPostExecute(List<String> returnStrings) {
 	    		
-	    		 
 	    		 //jobList.clear();
 	    		 parser = new XMLParser();
 	    		 Document doc = parser.getDomElement(returnStrings.get(0)); // getting DOM element
@@ -360,31 +359,6 @@ OnClickListener,ConnectionCallbacks, OnConnectionFailedListener {
 	    			 Log.i("Result of parsing",company);
 	    			 Log.i("Result of parsing",jobtitle);
 	    			
-
-	    			 HashMap<String, String> map = new HashMap<String, String>();
- 	            	map.put("company", company);
- 	            	map.put("jobtitle", jobtitle);
- 	            	//jobList.add(map);
-	            	listView = (ListView)findViewById(R.id.listViewJobs);
-	            	//adapter = new SimpleAdapter(MainActivity.this, jobList,R.layout.list_v,new String[] { "company","jobtitle" }, new int[] {R.id.company, R.id.jobtitle });
-	            	listView.setAdapter(adapter);
-	            	
-	            	//clicking of a job
-	            	listView.setClickable(true);
-	                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-	                    @Override
-	                    public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
-	                        Object o = listView.getItemAtPosition(position);
-	                        //String str=(String)o;//As you are using Default String Adapter
-	                        //Toast.makeText(getApplicationContext(),str,Toast.LENGTH_SHORT).show();
-	                        HashMap temp  = (HashMap)o;
-	                        String company = (String)temp.get("company");
-	                    	 Toast.makeText(getApplicationContext(),company, Toast.LENGTH_SHORT).show();
-	                    }
-	                });
-	            	
-
 	    			 
 	    			 Job job = new Job();
 	    			 job.setCompany(company);
@@ -392,17 +366,15 @@ OnClickListener,ConnectionCallbacks, OnConnectionFailedListener {
 	    			 job.setCity(city);
 	    			 job.setState(state);
 	    			 job.setUrl(url);
-	    			 job.setChecked(false);
 	    			 listSearch.add(job);
 	    			 
 	    		//	 HashMap<String, String> map = new HashMap<String, String>();
- 	            //	map.put("company", company);
- 	           // 	map.put("jobtitle", jobtitle);
- 	          //  	jobList.add(map);
+	            //	map.put("company", company);
+	           // 	map.put("jobtitle", jobtitle);
+	          //  	jobList.add(map);
 	            	//listView = (ListView)findViewById(R.id.listViewJobs);
 	            	//adapter = new SimpleAdapter(MainActivity.this, jobList,R.layout.list_v,new String[] { "company","jobtitle" }, new int[] {R.id.company, R.id.jobtitle });
 	            	//listView.setAdapter(adapter);
-
 	    		 }
 	    		 
 	    		 jobList.setJobList(listSearch);
@@ -419,6 +391,8 @@ OnClickListener,ConnectionCallbacks, OnConnectionFailedListener {
 	    		 
 	    		 //Button title = (Button)findViewById(R.id.button1);
 	    		// title.setText("Click to View Results");
+	    		 
+
 	    		 
 	    		}
 	    	
