@@ -59,7 +59,7 @@ public class CareerBuilder {
             if (entity != null) {
                 //do something with the response
                 responseString = EntityUtils.toString(entity);
-                Log.i("Result of API","Response String is "+responseString);
+                //Log.i("Result of API","Response String is "+responseString);
             }
             else 
             	Log.i("Result of API","print here5");

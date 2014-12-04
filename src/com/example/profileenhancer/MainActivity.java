@@ -70,7 +70,7 @@ OnClickListener,ConnectionCallbacks, OnConnectionFailedListener {
  
     private ConnectionResult mConnectionResult;
  
-    private SignInButton btnSignIn;
+    private SignInButton btnSignIn;	
     private TextView txtName, txtEmail;
     private LinearLayout llProfileLayout;
 	
@@ -325,7 +325,7 @@ OnClickListener,ConnectionCallbacks, OnConnectionFailedListener {
 	    		query = careerBuilder.setQuery(jobTitle);
 	    		//Log.i("Result of API",query.toString());
 	    		String result = careerBuilder.searchJobs(query.toString());
-	    		Log.i("Result of API","XML OUTPUT "+ result);
+	    		Log.i("Result of API","XML OUTPUT "+ "it come here ");
 	            returnString.add(result);
 	    		
 //	            query = indeed.setQuery(jobTitle);

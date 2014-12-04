@@ -10,26 +10,27 @@
 
      <LinearLayout
         android:id="@+id/llProfile"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_marginBottom="20dp"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:weightSum="3"
         android:visibility="gone">
         
-    
-	<LinearLayout
+    <LinearLayout
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:layout_marginLeft="10dp"
-           android:orientation="vertical"
-           android:layout_weight="2" >
+           android:orientation="horizontal"
+           android:layout_weight="1" >
+         
+	
         <TextView
          android:id="@+id/textView3"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
-         android:layout_alignBottom="@+id/textView2"
-         android:layout_alignLeft="@+id/signin"
+         android:layout_marginTop="22dp"
+         android:layout_marginLeft="20dp"
          android:text="Hello" />
     <TextView
          android:id="@+id/textViewName"
@@ -38,23 +39,25 @@
          android:layout_alignParentTop="true"
          android:layout_centerHorizontal="true"
          android:layout_marginTop="22dp"
+         android:layout_marginLeft="40dp"
          android:text="TextView" />
     </LinearLayout>
-
+     
      <LinearLayout
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:layout_marginLeft="10dp"
-           android:orientation="vertical"
-           android:layout_weight="2" >
-     
+           android:orientation="horizontal"
+           android:layout_weight="1" >
+    
       <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="62dp"
-        android:layout_toLeftOf="@+id/button1"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="32dp"
+        
         android:text="Job Title"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
@@ -62,47 +65,31 @@
         android:id="@+id/jobId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textView1"
-        android:layout_alignBottom="@+id/textView1"
-        android:layout_alignLeft="@+id/button1"
-        android:layout_marginLeft="39dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginLeft="40dp"
+        android:layout_centerHorizontal="true"
         android:ems="10" >
 
-        <requestFocus />
+       
     </EditText>
     </LinearLayout>
 
+     
     <Button
         android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/jobId"
+        
+        android:layout_marginLeft="20dp"
+        
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
         android:onClick="ViewJobs"
         android:text="Get Jobs" />
     
-    <LinearLayout
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_marginLeft="10dp"
-           android:orientation="vertical"
-           android:layout_weight="2" >
-        	<ListView
-        	android:id="@+id/listViewJobs"
-        	android:layout_width="match_parent"
-       		android:layout_height="wrap_content"
-        	android:layout_alignParentTop="true"
-        	android:layout_marginTop="202dp" >
-    		</ListView>
-    </LinearLayout>
+    
   
     </LinearLayout>
-    
-     
-    
-      
-
+ 
      <com.google.android.gms.common.SignInButton
          android:id="@+id/signin"
          android:layout_width="wrap_content"
