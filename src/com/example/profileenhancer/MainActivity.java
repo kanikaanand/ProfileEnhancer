@@ -51,6 +51,7 @@ public class MainActivity extends ActionBarActivity implements
 OnClickListener,ConnectionCallbacks, OnConnectionFailedListener {
 	
 	private static final int RC_SIGN_IN = 0;
+	private static final String DATABASE_NAME = "MSGDB";
     // Logcat tag
     private static final String TAG = "MainActivity";
  
@@ -301,6 +302,28 @@ OnClickListener,ConnectionCallbacks, OnConnectionFailedListener {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	
+	public void onClickSaved(View view)
+	{
+		sqldatabase entry = new sqldatabase(MainActivity.this);
+		
+		entry.open();
+		List<Job> savedJobs = entry.viewSavedJobs();
+		entry.close();
+		 
+
+			Gson gS = new Gson();
+			JobList savedList = new JobList();
+			
+			savedList.setJobList(savedJobs);
+			
+			String target = gS.toJson(savedList);
+			Intent i = new Intent();
+			i.putExtra("MyJobsAsString", target);
+			i.setClass(MainActivity.this, ShowSavedList.class);
+			startActivity(i);
 	}
 	 class LoadJobs extends AsyncTask<String, String, List<String>>{
 	    	List<String> returnString = new ArrayList<String>();

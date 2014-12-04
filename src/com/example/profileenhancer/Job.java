@@ -3,6 +3,7 @@ package com.example.profileenhancer;
 
 public class Job {
 
+	int id;
 	String jobTitle;
 	String company;
 	String city;
@@ -10,6 +11,12 @@ public class Job {
 	String url;
 	private boolean checked = false ;
 	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getJobTitle() {
 		return jobTitle;
 	}

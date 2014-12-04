@@ -1473,21 +1473,22 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f0b0002;
         public static final int action_menu_presenter=0x7f0b0003;
         public static final int action_mode_close_button=0x7f0b0036;
-        public static final int action_settings=0x7f0b005d;
+        public static final int action_settings=0x7f0b005e;
         public static final int activity_chooser_view_content=0x7f0b0037;
         public static final int always=0x7f0b0022;
         public static final int beginning=0x7f0b0029;
         public static final int book_now=0x7f0b0014;
         public static final int button1=0x7f0b0053;
+        public static final int button2=0x7f0b0054;
         public static final int buyButton=0x7f0b0010;
         public static final int buy_now=0x7f0b0015;
         public static final int buy_with_google=0x7f0b0016;
-        public static final int check=0x7f0b0055;
+        public static final int check=0x7f0b0056;
         public static final int checkbox=0x7f0b003f;
-        public static final int city=0x7f0b0058;
+        public static final int city=0x7f0b0059;
         public static final int classic=0x7f0b0017;
         public static final int collapseActionView=0x7f0b0023;
-        public static final int company=0x7f0b0056;
+        public static final int company=0x7f0b0057;
         public static final int default_activity_button=0x7f0b003a;
         public static final int dialog=0x7f0b0027;
         public static final int disableHome=0x7f0b001c;
@@ -1506,13 +1507,13 @@ containing a value of this type.
         public static final int ifRoom=0x7f0b0024;
         public static final int image=0x7f0b0039;
         public static final int jobId=0x7f0b0052;
-        public static final int jobTitle=0x7f0b0057;
-        public static final int jobtitle=0x7f0b005c;
+        public static final int jobTitle=0x7f0b0058;
+        public static final int jobtitle=0x7f0b005d;
         public static final int listMode=0x7f0b001a;
-        public static final int listViewJobs=0x7f0b005b;
+        public static final int listViewJobs=0x7f0b005c;
         public static final int list_item=0x7f0b003b;
         public static final int llProfile=0x7f0b004e;
-        public static final int main_btn_data=0x7f0b005a;
+        public static final int main_btn_data=0x7f0b005b;
         public static final int match_parent=0x7f0b0012;
         public static final int middle=0x7f0b002b;
         public static final int monochrome=0x7f0b0019;
@@ -1540,9 +1541,9 @@ containing a value of this type.
         public static final int showCustom=0x7f0b001e;
         public static final int showHome=0x7f0b001f;
         public static final int showTitle=0x7f0b0020;
-        public static final int signin=0x7f0b0054;
+        public static final int signin=0x7f0b0055;
         public static final int split_action_bar=0x7f0b0030;
-        public static final int state=0x7f0b0059;
+        public static final int state=0x7f0b005a;
         public static final int strict_sandbox=0x7f0b000f;
         public static final int submit_area=0x7f0b004b;
         public static final int tabMode=0x7f0b001b;
@@ -1612,7 +1613,8 @@ containing a value of this type.
         public static final int item_view=0x7f030019;
         public static final int list_items=0x7f03001a;
         public static final int list_v=0x7f03001b;
-        public static final int support_simple_spinner_dropdown_item=0x7f03001c;
+        public static final int saved_items=0x7f03001c;
+        public static final int support_simple_spinner_dropdown_item=0x7f03001d;
     }
     public static final class menu {
         public static final int main=0x7f0c0000;

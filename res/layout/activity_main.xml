@@ -86,6 +86,17 @@
         android:onClick="ViewJobs"
         android:text="Get Jobs" />
     
+     <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        
+        android:layout_marginLeft="20dp"
+        
+        android:layout_centerHorizontal="true"
+        android:onClick="onClickSaved"
+        android:text="Saved Jobs" />
+    
     
   
     </LinearLayout>
