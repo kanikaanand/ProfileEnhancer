@@ -8,6 +8,7 @@ public class Job {
 	String city;
 	String state;
 	String url;
+	private boolean checked = false ;
 	
 	public String getJobTitle() {
 		return jobTitle;
@@ -40,7 +41,15 @@ public class Job {
 		this.state = state;
 	}
 	
-	
-	
-	
+	 public boolean isChecked() {  
+	      return checked;  
+	    }  
+	 public void setChecked(boolean checked) {  
+	      this.checked = checked;  
+	    }   
+	 
+	 public void toggleChecked() {  
+	      checked = !checked ;  
+	    }  
+
 }
